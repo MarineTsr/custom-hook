@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { recipesContext } from "./context/recipes";
 import { useMousePosition } from "./hooks/useMousePosition";
-import { useGetRecipes } from "./hooks/useGetRecipes";
+import { useGetData } from "./hooks/useGetData";
 
 function App() {
+  const BASE_API_URL = useContext(recipesContext);
   const { x, y } = useMousePosition();
-  const recipeList = useGetRecipes();
+  const recipeList = useGetData(BASE_API_URL);
 
   return (
     <div>
